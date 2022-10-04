@@ -98,7 +98,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updatePatientModalLabel">Editar usuario</h5>
+                <h5 class="modal-title" id="updatePatientModalLabel">Editar Paciente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>
@@ -194,7 +194,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deletePatientModalLabel">Eliminar usuario</h5>
+                <h5 class="modal-title" id="deletePatientModalLabel">Eliminar Paciente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>

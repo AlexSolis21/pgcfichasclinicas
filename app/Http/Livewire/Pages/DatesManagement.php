@@ -37,7 +37,7 @@ class DatesManagement extends Component
         $validatedData = $this->validate();
 
         Dates::create($validatedData);
-        session()->flash('message', 'Cita creado correctamente');
+        session()->flash('message', 'Cita Creada Correctamente');
         $this->resetInput();
         $this->dispatchBrowserEvent('close-modal');
     }
