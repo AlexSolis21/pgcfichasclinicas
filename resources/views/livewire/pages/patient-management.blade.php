@@ -42,6 +42,8 @@
                                     <td>{{ $patient->fecha_de_nacimiento}}</td>
                                     <td>{{ $patient->direccion }}</td>
                                     <td>
+                                        <a href="{{ url('/pacientes/' . $patient->id) }}"
+                                            class="btn btn-xs btn-success pull-right">Ver</a>
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#updatePatientModal"
                                             wire:click="editPatient({{ $patient->id }})" class="btn btn-primary">
                                             Editar

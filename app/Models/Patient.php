@@ -19,4 +19,14 @@ class Patient extends Model
         'telefono',
         'direccion',
     ]; 
+
+    public function dates() {
+        return $this->hasMany(Dates::class, 'patient_id');
+    }
+
+    public function consults() {
+        return $this->hasMany(Consults::class, 'patient_id');
+    }
+
+
 }

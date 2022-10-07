@@ -28,18 +28,17 @@
                                     <th>Médico Que Atendió</th>
                                     <th>Fecha de Consulta</th>
                                     <th>Motivo de Consulta</th>
-                                    <th>Solicitó Pruebas de Laboratorio?</th>
+
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($consults as $consult)
                                 <tr>
-                                    <td>{{ $consult->patient_id }}</td>
-                                    <td>{{ $consult->user_id }}</td>
+                                    <td>{{ $consult->patient->nombres ." ". $consult->patient->apellidos }}</td>
+                                    <td>{{ $consult->doctor->nombre }}</td>
                                     <td>{{ $consult->fecha_consulta }}</td>
                                     <td>{{ $consult->motivo_consulta }}</td>
-                                    <td>{{ $consult->prueba_laboratorio }}</td>
             
                                     <td>
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#updateConsultsModal"

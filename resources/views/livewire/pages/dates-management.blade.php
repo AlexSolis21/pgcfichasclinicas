@@ -36,7 +36,7 @@
                                 @forelse ($dates as $date)
                                 <tr>
                                 
-                                    <td>{{ $date->patient_id }}</td>
+                                    <td>{{ $date->patient->nombres . " " . $date->patient->apellidos}}</td>
                                     <td>{{ $date->fecha_cita }}</td>
                                     <td>{{ $date->hora_cita }}</td>
                                     <td>{{ $date->descripcion }}</td>

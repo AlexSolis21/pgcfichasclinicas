@@ -15,4 +15,9 @@ class Dates extends Model
         'descripcion',
         'patient_id',
     ]; 
+    
+    public function patient() {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
 }

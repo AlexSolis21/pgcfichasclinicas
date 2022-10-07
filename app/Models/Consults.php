@@ -15,4 +15,13 @@ class Consults extends Model
         'patient_id',
         'user_id',
     ];
+
+    public function doctor() {
+        return $this->belongsTo(User::class, 'id');
+    }
+
+    public function patient() {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
 }

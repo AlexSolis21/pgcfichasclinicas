@@ -97,9 +97,12 @@ class ConsultsManagement extends Component
 
     public function render()
     {
+        // $user->roles()->pluck('name')->implode(' ')
         $consults = Consults::where('motivo_consulta','like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
         $patients = Patient::all();
-        $users = User::all();
+        $users = User::role('Medico')->get();
+        
+        
         return view('livewire.pages.consults-management', ['consults' => $consults, 'patients' => $patients, 'users' => $users]);
     }
 }

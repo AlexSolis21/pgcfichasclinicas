@@ -10,6 +10,7 @@ use App\Http\Livewire\Pages\ClientsManagement;
 use App\Http\Livewire\Pages\ConsultsManagement;
 use App\Http\Livewire\Pages\DatesManagement;
 use App\Http\Livewire\Pages\PatientManagement;
+use App\Http\Livewire\Pages\ShowPatient;
 use App\Http\Livewire\Pages\UserManagement;
 
 /*
@@ -44,6 +45,7 @@ Route::get('usuarios', UserManagement::class)->name('usuarios');
 Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('clientes', ClientsManagement::class)->name('clientes');
 Route::get('pacientes', PatientManagement::class)->name('pacientes');
+Route::get('pacientes/{id}', ShowPatient::class)->name('paciente');
 Route::get('citas', DatesManagement::class)->name('citas');
 Route::get('consultas', ConsultsManagement::class)->name('consultas');
 });
