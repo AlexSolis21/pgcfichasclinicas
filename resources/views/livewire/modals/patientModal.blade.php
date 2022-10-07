@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="studentModalLabel">Crear Paciente</h5>
+                <h5 class="modal-title" id="studentModalLabel">Registrar Paciente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     wire:click="closeModal"></button>
             </div>
@@ -200,7 +200,7 @@
             </div>
             <form wire:submit.prevent="destroyPatient">
                 <div class="modal-body">
-                    <h4>¿Está seguro de que quiere eliminar estos datos?</h4>
+                    <h4>¿Está seguro de eliminar estos datos?</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="closeModal"

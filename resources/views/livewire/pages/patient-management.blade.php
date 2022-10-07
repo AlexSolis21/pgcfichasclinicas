@@ -11,7 +11,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Pacientes
+                        <h4>Registro de Pacientes
                             <input type="search" wire:model="search" class="form-control float-end mx-2"
                                 placeholder="Buscar..." style="width: 230px" />
                             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
@@ -24,13 +24,10 @@
                         <table class="table table-borderd table-striped">
                             <thead>
                                 <tr>
-                                    <th>CUI</th>
-                                    <th>No. Expediente Clínico</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
                                     <th>Sexo</th>
                                     <th>Fecha De Nacimiento</th>
-                                    <th>Teléfono</th>
                                     <th>Dirección</th>
                                     <th>Acciones</th>
                                     
@@ -39,13 +36,10 @@
                             <tbody>
                                 @forelse ($patients as $patient)
                                 <tr>
-                                    <td>{{ $patient->cui }}</td>
-                                    <td>{{ $patient->expediente_clinico }}</td>
                                     <td>{{ $patient->nombres }}</td>
                                     <td>{{ $patient->apellidos }}</td>
                                     <td>{{ $patient->sexo }}</td>
                                     <td>{{ $patient->fecha_de_nacimiento}}</td>
-                                    <td>{{ $patient->telefono }}</td>
                                     <td>{{ $patient->direccion }}</td>
                                     <td>
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#updatePatientModal"

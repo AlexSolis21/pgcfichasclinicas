@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Fecha De La Cita</label>
-                        <input type="date" wire:model.lazy="fecha_cita" class="form-control form-bord">
+                        <input type="date" wire:model.lazy="fecha_cita" class="form-control form-bord" min="{{date('Y-m-d')}}">
                         @error('fecha_cita')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
