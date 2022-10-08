@@ -7,14 +7,17 @@ use App\Models\Patient;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class ConsultsManagement extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
 
     protected $paginationTheme = 'bootstrap';
 
-    public $fecha_consulta, $motivo_consulta, $prueba_laboratorio, $patient_id, $user_id, $consults_id;
+    public $fecha_consulta, $motivo_consulta, $prueba_laboratorio, $foto, $patient_id, $user_id, $consults_id;
     
     public $search = '';
     
@@ -23,7 +26,8 @@ class ConsultsManagement extends Component
         return [
             'fecha_consulta' => 'required|string',
             'motivo_consulta' => 'required|string',
-            'prueba_laboratorio' => 'required|string',
+            'prueba_laboratorio' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,PDF,',
             'patient_id' => 'required',
             'user_id' => 'required',
         ];
@@ -37,7 +41,9 @@ class ConsultsManagement extends Component
     public function saveConsults()
     {
         $validatedData = $this->validate();
-
+        if (!empty($validatedData['foto'])) {
+            $validatedData['foto'] = $this->foto->store('fotos', 'public');
+        }
         Consults::create($validatedData);
         session()->flash('message', 'Registro Creado Correctamente');
         $this->resetInput();
@@ -52,6 +58,7 @@ class ConsultsManagement extends Component
             $this->fecha_consulta = $consults->fecha_consulta;
             $this->motivo_consulta = $consults->motivo_consulta;
             $this->prueba_laboratorio = $consults->prueba_laboratorio;
+            $this->foto = $consults->foto;
             $this->patient_id = $consults->patient_id;
             $this->user_id = $consults->user_id;
         } else {
@@ -91,6 +98,7 @@ class ConsultsManagement extends Component
         $this->fecha_consulta = '';
         $this->motivo_consulta = '';
         $this->prueba_laboratorio = '';
+        $this->foto = '';
         $this->patient_id = '';
         $this->user_id = '';
     }

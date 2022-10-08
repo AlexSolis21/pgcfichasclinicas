@@ -61,6 +61,20 @@
                         @enderror
                     </div>
 
+                     <div class="mb-3">
+                        @if ($foto)
+                        Prev:
+                        <div>
+                          <img src="{{ $foto->temporaryUrl() }}" width="100" height="100">
+                        </div>
+                        @endif
+                        <label>Insertar Imagen Prueba de Laboratorio</label>
+                        <input class="form-control form-bord" type="file" wire:model="foto">
+                        @error('foto')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                      </div> 
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="closeModal"

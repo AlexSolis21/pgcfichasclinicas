@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_consulta');
             $table->string('motivo_consulta');
-            $table->string('prueba_laboratorio');
+            $table->string('prueba_laboratorio')->nullable();
+            $table->string('foto')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('patient_id');

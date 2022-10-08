@@ -12,6 +12,7 @@ class Consults extends Model
         'fecha_consulta',
         'motivo_consulta',
         'prueba_laboratorio',
+        'foto',
         'patient_id',
         'user_id',
     ];
