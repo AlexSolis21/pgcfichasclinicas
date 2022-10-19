@@ -6,7 +6,6 @@ use App\Http\Livewire\Auth\ResetPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\ExampleLaravel\UserProfile;
-use App\Http\Livewire\Pages\ClientsManagement;
 use App\Http\Livewire\Pages\ConsultsManagement;
 use App\Http\Livewire\Pages\DatesManagement;
 use App\Http\Livewire\Pages\PatientManagement;
@@ -43,7 +42,6 @@ Route::get('user-profile', UserProfile::class)->middleware('auth')->name('user-p
 Route::group(['middleware' => 'auth'], function () {
 Route::get('usuarios', UserManagement::class)->name('usuarios');
 Route::get('dashboard', Dashboard::class)->name('dashboard');
-Route::get('clientes', ClientsManagement::class)->name('clientes');
 Route::get('pacientes', PatientManagement::class)->name('pacientes');
 Route::get('pacientes/{id}', ShowPatient::class)->name('paciente');
 Route::get('citas', DatesManagement::class)->name('citas');

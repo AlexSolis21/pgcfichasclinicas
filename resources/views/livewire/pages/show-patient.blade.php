@@ -8,21 +8,32 @@
                 <div class="row">
                     <div class="col-12 col-xl-12">
                        <h4 class="text-center">Datos del Paciente</h4>
-                        <div class="">
-                            <div>
-                                <p class="text-dark">CUI: {{ $patient->cui }} </p>
-                                <p class="text-dark">No. Expediente Clinico: {{ $patient->cui }} </p>
-                                <p class="text-dark">Nombres: {{ $patient->nombres }} </p>
-                                <p class="text-dark">Apellidos: {{ $patient->apellidos }} </p>
-                                <p class="text-dark">Sexo: {{ $patient->sexo }} </p>
-                                <p class="text-dark">Fecha de Nacimiento: {{ $patient->fecha_de_nacimiento }} </p>
-                                <p class="text-dark">Telefono: {{ $patient->telefono }} </p>
-                                <p class="text-dark">Direccion: {{ $patient->direccion }} </p>
-                              
-                            </div>
-                            
-                        </div>
                         <div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                            <p class="text-left">CUI: {{ $patient->cui }} </p>
+                            </div>
+                           <div class="shadow p-3 mb-2 text-black rounded border border-dark"> 
+                                <p class="text-left">No. Expediente Clinico: {{ $patient->expediente_clinico }} </p>
+                            </div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                                <p class="text-left">Nombres: {{ $patient->nombres }} </p>
+                            </div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                                <p class="text-left">Apellidos: {{ $patient->apellidos }} </p>
+                            </div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark">    
+                                <p class="text-left">Sexo: {{ $patient->sexo }} </p>
+                            </div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark"> 
+                                <p class="text-left">Fecha de Nacimiento: {{ $patient->fecha_de_nacimiento }} </p>
+                            </div>
+                            <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                                <p class="text-left">Telefono: {{ $patient->telefono }} </p>
+                            </div>
+                            <Div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                                <p class="text-left">Direccion: {{ $patient->direccion }} </p>
+                            </div>
+                        </div>
                             <h4 class="text-center">Citas del Paciente</h4>
                             <table class="table table-borderd table-striped">
                                 <thead>
