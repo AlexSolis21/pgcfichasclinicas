@@ -89,6 +89,13 @@
                         </tbody>
                     </table>
 
+                    <h4 class="text-center">Expediente</h4>
+                    <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                        <p class="text-left">CUI: {{ $patient->expedient->enfermedad_actual}} </p>
+                        </div>
+                        <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                            <p class="text-left">CUI: {{ $patient->expedient->frecuencia_cardiaca}} </p>
+                            </div>
 
                 </div>
                 <div class="col-12 col-xl-6">

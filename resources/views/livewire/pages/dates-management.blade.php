@@ -28,6 +28,7 @@
                                     <th>Fecha De La Cita</th>
                                     <th>Hora De La Cita</th>
                                     <th>Descripcion</th>
+                                    <th>Acciones</th>
                                     
                                 
                                 </tr>

@@ -8,6 +8,7 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\ExampleLaravel\UserProfile;
 use App\Http\Livewire\Pages\ConsultsManagement;
 use App\Http\Livewire\Pages\DatesManagement;
+use App\Http\Livewire\Pages\ExpedientsManagement;
 use App\Http\Livewire\Pages\PatientManagement;
 use App\Http\Livewire\Pages\ShowPatient;
 use App\Http\Livewire\Pages\UserManagement;
@@ -46,5 +47,6 @@ Route::get('pacientes', PatientManagement::class)->name('pacientes');
 Route::get('pacientes/{id}', ShowPatient::class)->name('paciente');
 Route::get('citas', DatesManagement::class)->name('citas');
 Route::get('consultas', ConsultsManagement::class)->name('consultas');
+Route::get('expedientes', ExpedientsManagement::class)->name('expedientes');
 });
 

@@ -1,6 +1,6 @@
 <div>
 
-    @include('livewire.modals.consultsModal')
+    @include('livewire.modals.expedientsModal') 
 
     <div class="container">
         <div class="row">
@@ -11,11 +11,11 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Registro De Consultas
+                        <h4>Registro de Expedientes
                             <input type="search" wire:model="search" class="form-control float-end mx-2"
                                 placeholder="Buscar..." style="width: 230px" />
                             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
-                                data-bs-target="#consultsModal">
+                                data-bs-target="#expedientsModal">
                                 Agregar Nuevo Registro
                             </button>
                         </h4>
@@ -25,60 +25,54 @@
                             <thead>
                                 <tr>
                                     <th>Paciente</th>
-                                    <th>Médico Que Atendió</th>
-                                    <th>Fecha de Consulta</th>
-                                    <th>Motivo de Consulta</th>
+                                    <th>Número de Expediente Clínico</th>
                                     <th>Acciones</th>
-
-
                                 </tr>
                             </thead>
-                            <tbody>
-                                @forelse ($consults as $consult)
-                                <tr>
-                                    <td>{{ $consult->patient->nombres ." ". $consult->patient->apellidos }}</td>
-                                    <td>{{ $consult->doctor->nombre }}</td>
-                                    <td>{{ $consult->fecha_consulta }}</td>
-                                    <td>{{ $consult->motivo_consulta }}</td>
+                              <tbody>
+                                @forelse ($expedients as $expedient )
+                                <tr> 
+                                    <td>{{ $expedient->patient->nombres ." ". $expedient->patient->apellidos }}</td>
+                                    <td>{{ $expedient->patient->expediente_clinico }}</td>
             
                                     <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateConsultsModal"
-                                            wire:click="editConsults({{ $consult->id }})" class="btn btn-primary">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateExpedientsModal"
+                                            wire:click="editExpedients({{ $expedient->id }})" class="btn btn-primary">
                                             Editar
                                         </button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteConsultsModal"
-                                            wire:click="deleteConsults({{ $consult->id }})"
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteExpedientsModal"
+                                            wire:click="deleteExpedients({{ $expedient->id }})"
                                             class="btn btn-danger">Eliminar</button>
-                                    </td>
+                                    </td> 
                                 </tr>
                                 @empty
                                 <tr>
                                     <td colspan="5">No se ha encontrado ningún registro</td>
                                 </tr>
                                 @endforelse
-                            </tbody>
+                            </tbody> 
                         </table>
                         <div>
-                            {{ $consults->links() }}
+                             {{ $expedients->links() }} 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
+     <script>
         window.addEventListener('close-modal', event => {
-            const consultsModal = document.getElementById('consultsModal');
-            const updateConsultsModal = document.getElementById('updateConsultsModal');
-            const deleteConsultsModal = document.getElementById('deleteConsultsModal');
+            const expedientsModal = document.getElementById('expedientsModal');
+            const updateExpedientsModal = document.getElementById('updateExpedientsModal');
+            const deleteExpedientsModal = document.getElementById('deleteExpedientsModal');
 
-            const modal1 = bootstrap.Modal.getInstance(consultsModal)
-            const modal2 = bootstrap.Modal.getInstance(updateConsultsModal)
-            const modal3 = bootstrap.Modal.getInstance(deleteConsultsModal)
+            const modal1 = bootstrap.Modal.getInstance(expedientsModal)
+            const modal2 = bootstrap.Modal.getInstance(updateExpedientsModal)
+            const modal3 = bootstrap.Modal.getInstance(deleteExpedientsModal)
 
             if (modal1 != null) modal1.hide();
             if (modal2 != null) modal2.hide();
             if (modal3 != null) modal3.hide();
         })
-    </script>
+    </script> 
 </div>
