@@ -12,12 +12,29 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Registro de Pacientes
+                            <div>
+                                <div class="row">
+                                    <a href="{{ url("/pacientes/reportes/pdf") }}"
+                                       class="btn btn-primary"
+                                        target="_blank">
+                                        Descargar PDF
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <a href="{{ url("/pacientes/reportes/excel") }}"
+                                       class="btn btn-primary"
+                                        target="_blank">
+                                        Descargar Excel
+                                    </a>
+                                </div>
+                            </div>
                             <input type="search" wire:model="search" class="form-control float-end mx-2"
                                 placeholder="Buscar..." style="width: 230px" />
                             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
                                 data-bs-target="#patientModal">
                                 Agregar Nuevo Paciente
                             </button>
+
                         </h4>
                     </div>
                     <div class="card-body">
@@ -86,5 +103,5 @@
         })
     </script>
 
-   
+
 </div>

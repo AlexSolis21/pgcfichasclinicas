@@ -7,6 +7,13 @@
             <div class="row">
                 <div class="row">
                     <div class="col-12 col-xl-12">
+                        <div class="row">
+                            <a href="{{ url("/pacientes/reportes/$patient->id/pdf") }}"
+                               class="btn btn-primary"
+                                target="_blank">
+                                Descargar PDF
+                            </a>
+                        </div>
                         <h4 class="text-danger text-center">Datos del Paciente:</h4>
                         <div class="p-3">
                             {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark">  --}}

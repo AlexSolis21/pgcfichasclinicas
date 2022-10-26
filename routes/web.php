@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Exports\ExportsExcelController;
+use App\Http\Controllers\Exports\ExportsPdfController;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\ResetPassword;
@@ -48,5 +50,15 @@ Route::get('pacientes/{id}', ShowPatient::class)->name('paciente');
 Route::get('citas', DatesManagement::class)->name('citas');
 Route::get('consultas', ConsultsManagement::class)->name('consultas');
 Route::get('expedientes', ExpedientsManagement::class)->name('expedientes');
+});
+
+Route::controller(ExportsPdfController::class)->group(function () {
+    Route::get('/pacientes/reportes/pdf', 'reportePdfPaciente');
+    Route::get('/pacientes/reportes/{id}/pdf', 'reportePdfPacienteSeleccionado');
+});
+
+
+Route::controller(ExportsExcelController::class)->group(function () {
+    Route::get('/pacientes/reportes/excel', 'reporteExcelPaciente');
 });
 
