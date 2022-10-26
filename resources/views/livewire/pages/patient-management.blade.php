@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (session()->has('message'))
-                <h5 class="alert alert-success">{{ session('message') }}</h5>
+                    <h5 class="alert alert-success">{{ session('message') }}</h5>
                 @endif
 
                 <div class="card">
@@ -30,33 +30,35 @@
                                     <th>Fecha De Nacimiento</th>
                                     <th>Dirección</th>
                                     <th>Acciones</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($patients as $patient)
-                                <tr>
-                                    <td>{{ $patient->nombres }}</td>
-                                    <td>{{ $patient->apellidos }}</td>
-                                    <td>{{ $patient->sexo }}</td>
-                                    <td>{{ $patient->fecha_de_nacimiento}}</td>
-                                    <td>{{ $patient->direccion }}</td>
-                                    <td>
-                                        <a href="{{ url('/pacientes/' . $patient->id) }}"
-                                            class="btn btn-xs btn-success pull-right">Ver</a>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updatePatientModal"
-                                            wire:click="editPatient({{ $patient->id }})" class="btn btn-primary">
-                                            Editar
-                                        </button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deletePatientModal"
-                                            wire:click="deletePatient({{ $patient->id }})"
-                                            class="btn btn-danger">Eliminar</button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $patient->nombres }}</td>
+                                        <td>{{ $patient->apellidos }}</td>
+                                        <td>{{ $patient->sexo }}</td>
+                                        <td>{{ $patient->fecha_de_nacimiento }}</td>
+                                        <td>{{ $patient->direccion }}</td>
+                                        <td>
+                                            <a href="{{ url('/pacientes/' . $patient->id) }}"
+                                                class="btn btn-xs btn-success pull-right">Ver</a>
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#updatePatientModal"
+                                                wire:click="editPatient({{ $patient->id }})" class="btn btn-primary">
+                                                Editar
+                                            </button>
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#deletePatientModal"
+                                                wire:click="deletePatient({{ $patient->id }})"
+                                                class="btn btn-danger">Eliminar</button>
+                                        </td>
+                                    </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5">No se ha encontrado ningún registro</td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="5">No se ha encontrado ningún registro</td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -83,4 +85,6 @@
             if (modal3 != null) modal3.hide();
         })
     </script>
+
+   
 </div>

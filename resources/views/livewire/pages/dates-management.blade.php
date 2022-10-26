@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (session()->has('message'))
-                <h5 class="alert alert-success">{{ session('message') }}</h5>
+                    <h5 class="alert alert-success">{{ session('message') }}</h5>
                 @endif
 
                 <div class="card">
@@ -20,43 +20,47 @@
                             </button>
                         </h4>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-borderd table-striped">
+                    <div class="table-bordered table-responsive container">
+                        <table class="table-sm align-middle">
                             <thead>
                                 <tr>
-                                    <th>Paciente</th>
-                                    <th>Fecha De La Cita</th>
-                                    <th>Hora De La Cita</th>
-                                    <th>Descripcion</th>
-                                    <th>Acciones</th>
-                                    
-                                
+                                    <th scope="col" class="w-8">Paciente</th>
+                                    <th scope="col" class="w-8">Fecha De La Cita</th>
+                                    <th scope="col" class="w-8">Hora De La Cita</th>
+                                    <th scope="col" class="w-8">Descripcion</th>
+                                    <th scope="col" class="w-8">Acciones</th>
                                 </tr>
+
                             </thead>
                             <tbody>
                                 @forelse ($dates as $date)
-                                <tr>
-                                
-                                    <td>{{ $date->patient->nombres . " " . $date->patient->apellidos}}</td>
-                                    <td>{{ $date->fecha_cita }}</td>
-                                    <td>{{ $date->hora_cita }}</td>
-                                    <td>{{ $date->descripcion }}</td>
-                                    
+                                    <tr>
+
+                                        <td class="align-top">
+                                            {{ $date->patient->nombres . ' ' . $date->patient->apellidos }}</td>
+                                        <td class="align-top">{{ $date->fecha_cita }}</td>
+                                        <td class="align-top">{{ $date->hora_cita }}</td>
+                                        <td class="align-top">{{ $date->descripcion }}</td>
+                                       
+                                        <td>
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#updateCitasModal"
+                                                wire:click="editCitas({{ $date->id }})" class="btn btn-primary">
+                                                Editar
+                                            </button>
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#deleteCitasModal"
+                                                wire:click="deleteCitas({{ $date->id }})"
+                                                class="btn btn-danger">Eliminar</button>
+                                        
+                                        </td>
+                                        
+                                    </tr>
                                    
-                                    <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateCitasModal"
-                                            wire:click="editCitas({{ $date->id }})" class="btn btn-primary">
-                                            Editar
-                                        </button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteCitasModal"
-                                            wire:click="deleteCitas({{ $date->id }})"
-                                            class="btn btn-danger">Eliminar</button>
-                                    </td>
-                                </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5">No se ha encontrado ningúna cita</td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="5">No se ha encontrado ningúna cita</td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>

@@ -21,7 +21,10 @@ class RoleSeeder extends Seeder
         // create roles
         $role1 = Role::create(['name' => 'Medico']);
         $role2 = Role::create(['name' => 'Secretaria']);
-
+        $role2 = Role::create(['name' => 'Nutricionista']);
+        $role2 = Role::create(['name' => 'Psicologa']);
+        $role2 = Role::create(['name' => 'Enfermera Profesional']);
+        $role2 = Role::create(['name' => 'Auxiliar de Enfermeria']);
         // create permissions
         Permission::create(['name' => 'editar paciente']);
     }

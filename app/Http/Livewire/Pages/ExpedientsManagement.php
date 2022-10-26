@@ -15,53 +15,53 @@ class ExpedientsManagement extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $enfermedad_actual, 
-           $presion_arterial, 
-           $frecuencia_cardiaca, 
-           $frecuencia_respiratoria, 
-           $saturacion, 
-           $temperatura, 
-           $peso, 
-           $estatura, 
-           $piel, 
-           $cabeza, 
-           $ojos, 
-           $nariz, 
-           $boca, 
-           $cuello, 
-           $torax, 
-           $pulmones, 
-           $corazon, 
-           $abdomen, 
-           $genitourinario, 
-           $miembros, 
-           $neurologico, 
-           $alergias, 
-           $traumatismos, 
-           $cirugias, 
-           $comorbilidad, 
-           $hospitalizacion, 
-           $transfusiones, 
-           $farmacos, 
-           $ginecologico_obstetrico, 
-           $grupo_sanguineo, 
-           $tabaquismo, 
-           $alcoholismo, 
-           $drogas, 
-           $alimentacion, 
-           $ejercicio, 
-           $inmunizaciones,  
-           $habitos, 
-           $padres, 
-           $hermanos, 
-           $otros_familiares, 
-           $diagnostico, 
-           $descripcion_diagnostico, 
-           $tratamiento, 
-           $evolucion,
-           $observaciones, 
-           $patient_id,
-           $user_id;
+    public $enfermedad_actual,
+        $presion_arterial,
+        $frecuencia_cardiaca,
+        $frecuencia_respiratoria,
+        $saturacion,
+        $temperatura,
+        $peso,
+        $estatura,
+        $piel,
+        $cabeza,
+        $ojos,
+        $nariz,
+        $boca,
+        $cuello,
+        $torax,
+        $pulmones,
+        $corazon,
+        $abdomen,
+        $genitourinario,
+        $miembros,
+        $neurologico,
+        $alergias,
+        $traumatismos,
+        $cirugias,
+        $comorbilidad,
+        $hospitalizacion,
+        $transfusiones,
+        $farmacos,
+        $ginecologico_obstetrico,
+        $grupo_sanguineo,
+        $tabaquismo,
+        $alcoholismo,
+        $drogas,
+        $alimentacion,
+        $ejercicio,
+        $inmunizaciones,
+        $habitos,
+        $padres,
+        $hermanos,
+        $otros_familiares,
+        $diagnostico,
+        $descripcion_diagnostico,
+        $tratamiento,
+        $evolucion,
+        $observaciones,
+        $patient_id,
+        $user_id;
 
     public $search = '';
 
@@ -112,9 +112,9 @@ class ExpedientsManagement extends Component
             'tratamiento' => 'nullable|string|min:6',
             'evolucion' => 'nullable|string|min:6',
             'observaciones' => 'nullable|string|min:6',
-            'patient_id' => 'required|unique:expedients,id',
+            'patient_id' => 'required|unique:expedients,patient_id',
             'user_id' => 'required',
-            
+
 
         ];
     }
@@ -192,7 +192,55 @@ class ExpedientsManagement extends Component
 
     public function updateExpedients()
     {
-        $validatedData = $this->validate();
+        $validatedData = $this->validate([
+            'enfermedad_actual' => 'nullable|string|min:6',
+            'presion_arterial' => 'nullable|string|min:2',
+            'frecuencia_cardiaca' => 'nullable|string|min:2',
+            'frecuencia_respiratoria' => 'nullable|string|min:2',
+            'saturacion' => 'nullable|string|min:2',
+            'temperatura' => 'nullable|string|min:2',
+            'peso' => 'nullable|string|min:2',
+            'estatura' => 'nullable|string|min:2',
+            'piel' => 'nullable|string|min:6',
+            'cabeza' => 'nullable|string|min:6',
+            'ojos' => 'nullable|string|min:6',
+            'nariz' => 'nullable|string|min:6',
+            'boca' => 'nullable|string|min:6',
+            'cuello' => 'nullable|string|min:6',
+            'torax' => 'nullable|string|min:6',
+            'pulmones' => 'nullable|string|min:6',
+            'corazon' => 'nullable|string|min:6',
+            'abdomen' => 'nullable|string|min:6',
+            'genitourinario' => 'nullable|string|min:6',
+            'miembros' => 'nullable|string|min:6',
+            'neurologico' => 'nullable|string|min:6',
+            'alergias' => 'nullable|string|min:6',
+            'traumatismos' => 'nullable|string|min:6',
+            'cirugias' => 'nullable|string|min:6',
+            'comorbilidad' => 'nullable|string|min:6',
+            'hospitalizacion' => 'nullable|string|min:6',
+            'transfusiones' => 'nullable|string|min:6',
+            'farmacos' => 'nullable|string|min:6',
+            'ginecologico_obstetrico' => 'nullable|string|min:6',
+            'grupo_sanguineo' => 'nullable|string|min:6',
+            'alcoholismo' => 'nullable|string|min:6',
+            'drogas' => 'nullable|string|min:6',
+            'alimentacion' => 'nullable|string|min:6',
+            'ejercicio' => 'nullable|string|min:6',
+            'inmunizaciones' => 'nullable|string|min:6',
+            'habitos' => 'nullable|string|min:6',
+            'padres' => 'nullable|string|min:6',
+            'hermanos' => 'nullable|string|min:6',
+            'otros_familiares' => 'nullable|string|min:6',
+            'diagnostico' => 'nullable|string|min:6',
+            'descripcion_diagnostico' => 'nullable|string|min:6',
+            'tratamiento' => 'nullable|string|min:6',
+            'evolucion' => 'nullable|string|min:6',
+            'observaciones' => 'nullable|string|min:6',
+            'patient_id' => 'required',
+            'user_id' => 'required',
+
+        ]);
         ModelsExpedients::where('id', $this->expedients_id)->update($validatedData);
         session()->flash('message', 'Expediente Actualizado Correctamente');
         $this->resetInput();
@@ -263,18 +311,17 @@ class ExpedientsManagement extends Component
         $this->tratamiento = '';
         $this->evolucion = '';
         $this->observaciones = '';
-        
     }
 
     public function render()
     {
-        $expedients = ModelsExpedients::where('enfermedad_actual','like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
+        $expedients = ModelsExpedients::where('enfermedad_actual', 'like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
         $patients = Patient::all();
         $users = User::role('Medico')->get();
         return view('livewire.pages.expedients-management', [
             'expedients' => $expedients,
             'patients' => $patients,
-            'users' => $users   
+            'users' => $users
         ]);
     }
 }

@@ -63,5 +63,9 @@ class Expedients extends Model
         return $this->belongsTo(Patient::class, 'patient_id');
     }
 
+    public function medic() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 
 }
