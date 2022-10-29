@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col-12 col-xl-12">
-                        <div class="row">
+                        <div class="col-sm-4">
                             <a href="{{ url("/pacientes/reportes/$patient->id/pdf") }}" class="btn btn-primary"
                                 target="_blank">
                                 Descargar PDF
@@ -23,7 +23,7 @@
                                     <h5 class="mb-0">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                             aria-expanded="true" aria-controls="collapseOne">
-                                            <h4 class="text-danger text-center">Datos del Paciente:</h4>
+                                            <h4 class="text-dark text-center">Datos del Paciente:</h4>
                                             <div class="p-3">
                                         </button>
                                     </h5>
@@ -96,7 +96,7 @@
                                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
                                         aria-expanded="false" aria-controls="collapseTwo">
 
-                                        <h4 class="text-danger text-center">Citas del Paciente:</h4>
+                                        <h4 class="text-dark text-center">Citas del Paciente:</h4>
                                     </button>
                                 </h5>
                             </div>
@@ -138,7 +138,7 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
                             aria-expanded="false" aria-controls="collapseThree">
-                            <h4 class="text-danger text-center">Consultas del Paciente:</h4>
+                            <h4 class="text-dark text-center">Consultas del Paciente:</h4>
                         </button>
                     </h5>
                 </div>
@@ -189,7 +189,7 @@
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
                             aria-expanded="false" aria-controls="collapseFour">
 
-                            <h4 class=" text-danger text-center">Expediente Clínico:</h4>
+                            <h4 class=" text-dark text-center">Expediente Clínico:</h4>
 
                         </button>
                     </h5>
