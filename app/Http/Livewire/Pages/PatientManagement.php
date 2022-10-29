@@ -18,13 +18,13 @@ class PatientManagement extends Component
     protected function rules()
     {
         return [
-            'cui' => 'nullable|string|min:6',
+            'cui' => 'nullable|string|digits:13',
             'expediente_clinico' => 'required|string|min:4',
             'nombres' => 'required|string|min:6',
             'apellidos' => 'required|string|min:6',
             'sexo' => 'required',
             'fecha_de_nacimiento' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'nullable',
             'direccion' => 'required|string|min:6',
         ];
     }
