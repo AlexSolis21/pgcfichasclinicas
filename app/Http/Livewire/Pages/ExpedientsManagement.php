@@ -131,6 +131,7 @@ class ExpedientsManagement extends Component
         ModelsExpedients::create($validatedData);
         session()->flash('message', 'Datos Guardados Correctamente');
         $this->resetInput();
+        $this->dispatchBrowserEvent('load-select');
         $this->dispatchBrowserEvent('close-modal');
     }
 

@@ -28,55 +28,63 @@
                                         </button>
                                     </h5>
                                 </div>
-                                {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark">  --}}
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">CUI: {{ $patient->cui }} </th>
-                                        </table>
-                                        {{-- </div>  --}}
+                                {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">CUI: {{ $patient->cui }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">No. Expediente Clinico:
-                                                {{ $patient->expediente_clinico }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">No. Expediente Clinico:
+                                                    {{ $patient->expediente_clinico }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Nombres: {{ $patient->nombres }}
-                                            </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Nombres: {{ $patient->nombres }}
+                                                </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Apellidos:
-                                                {{ $patient->apellidos }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Apellidos:
+                                                    {{ $patient->apellidos }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Sexo: {{ $patient->sexo }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Sexo: {{ $patient->sexo }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Fecha de Nacimiento:
-                                                {{ $patient->fecha_de_nacimiento }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Fecha de Nacimiento:
+                                                    {{ $patient->fecha_de_nacimiento }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Telefono:
-                                                {{ $patient->telefono }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Telefono:
+                                                    {{ $patient->telefono }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                         {{-- <div class="shadow p-3 mb-2 text-black rounded border border-dark"> --}}
-                                        <table class="table table-borderd table-striped">
-                                            <th class="text-left text-dark p-1">Direccion:
-                                                {{ $patient->direccion }} </th>
-                                        </table>
-                                        {{-- </div> --}}
+                                            <table class="table table-borderd table-striped">
+                                                <th class="text-left text-dark p-1">Direccion:
+                                                    {{ $patient->direccion }} </th>
+                                            </table>
+                                            {{--
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -85,8 +93,8 @@
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
 
                                         <h4 class="text-danger text-center">Citas del Paciente:</h4>
                                     </button>
@@ -98,67 +106,26 @@
                                     <table class="table table-borderd table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Fecha de la Cita</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($patient->dates as $row)
-                                                <tr>
-                                                    <td>{{ $row->fecha_cita }}</td>
-                                                </tr>
-
-                                            @empty
-                                                <tr>
-                                                    <td colspan="5">No se ha encontrado ningún registro</td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-borderd table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Hora de la Cita</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($patient->dates as $row)
-                                                <tr>
-                                                    <td>{{ $row->hora_cita }}</td>
-                                                </tr>
-
-
-                                            @empty
-                                                <tr>
-                                                    <td colspan="5">No se ha encontrado ningún registro</td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-
-
-                                    <table class="table table-borderd table-striped">
-                                        <thead>
-                                            <tr>
+                                                <th>Fecha De La Cita</th>
+                                                <th>Hora De La Citaaaa</th>
                                                 <th>Descripcion</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @forelse ($patient->dates as $row)
+                                            <tr>
+                                                <td>{{ $row->fecha_cita }}</td>
+                                                <td>{{ $row->hora_cita }}</td>
+                                                <td>{{ $row->descripcion }}</td>
+                                            </tr>
 
+                                            @empty
+                                            <tr>
+                                                <td colspan="5">No se ha encontrado ningún registro</td>
+                                            </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
-
-                                    @forelse ($patient->dates as $row)
-                                        <tr>
-                                            <td class="text-break">{{ $row->descripcion }}</td>
-                                        </tr>
-
-                                    @empty
-
-                                        <tr>
-                                            <td colspan="5">No se ha encontrado ningún registro</td>
-                                        </tr>
-                                    @endforelse
                                 </div>
                             </div>
                         </div>
@@ -183,22 +150,33 @@
                                     <th>Fecha de Consulta</th>
                                     <th>Motivo de Consulta</th>
                                     <th>Pruebas de Laboratorio</th>
+                                    <th>Prueba</th>
                                     <th>Atendido Por:</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($patient->consults as $row)
-                                    <tr>
-                                        <td>{{ $row->fecha_consulta }}</td>
-                                        <td>{{ $row->motivo_consulta }}</td>
-                                        <td>{{ $row->prueba_laboratorio }}</td>
-                                        <td>{{ $row->doctor->nombre }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $row->fecha_consulta }}</td>
+                                    <td>{{ $row->motivo_consulta }}</td>
+                                    <td>{{ $row->prueba_laboratorio }}</td>
+                                    @if ($row->prueba_laboratorio == "Si")
+                                    <td>
+                                        <div class="avatar avatar-xl position-relative">
+                                            <img src="/storage/{{$row->foto}}" alt="profile_image"
+                                                class="w-100 border-radius-lg shadow-sm">
+                                        </div>
+                                    </td>
+                                    @else
+                                    <td></td>
+                                    @endif
+                                    <td>{{ $row->doctor->nombre }}</td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="5">No se ha encontrado ningún registro</td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="5">No se ha encontrado ningún registro</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -210,15 +188,15 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
                             aria-expanded="false" aria-controls="collapseFour">
-    
+
                             <h4 class=" text-danger text-center">Expediente Clínico:</h4>
-    
+
                         </button>
                     </h5>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                     <div class="card-body">
-    
+
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Médico: {{ $patient->expedient->medic->nombre ?? '' }} </p>
                         </div>
@@ -228,20 +206,20 @@
                             </p>
                         </div>
                         <h5 class="text-danger text-left">Signos Vitales:</h5>
-    
+
                         <div class="container">
                             <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                                 <div class="col">
                                     <p class="text-left">Presión Arterial mm Hg:</p>
                                     <div class="p-3 border bg-light">{{ $patient->expedient->presion_arterial ?? '' }}
                                     </div>
-    
+
                                 </div>
                                 <div class="col">
                                     <p class="text-left">Frecuencia Cárdiaca:</p>
                                     <div class="p-3 border bg-light">
                                         {{ $patient->expedient->frecuencia_cardiaca ?? '' }} </div>
-    
+
                                 </div>
                                 <div class="col">
                                     <p class="text-left">Frecuencia Respiratoria:</p>
@@ -334,7 +312,8 @@
                             <p class="text-left">Farmacos: {{ $patient->expedient->farmacos ?? '' }} </p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
-                            <p class="text-left">Ginecologico-Obstetrico:{{ $patient->expedient->ginecologico_obstetrico ?? '' }}</p>
+                            <p class="text-left">Ginecologico-Obstetrico:{{ $patient->expedient->ginecologico_obstetrico
+                                ?? '' }}</p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Grupo Sanguineo: {{ $patient->expedient->grupo_sanguineo ?? '' }}</p>
@@ -366,14 +345,16 @@
                             <p class="text-left">Hermanos: {{ $patient->expedient->hermanos ?? '' }} </p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
-                            <p class="text-left">Otros Familiares: {{ $patient->expedient->otros_familiares ?? '' }} </p>
+                            <p class="text-left">Otros Familiares: {{ $patient->expedient->otros_familiares ?? '' }}
+                            </p>
                         </div>
                         <h5 class="text-danger"><strong>Diagnostico:</strong></h5>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Diagnostico: {{ $patient->expedient->padres ?? '' }} </p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
-                            <p class="text-left">Descripcion del Diagnostico:{{ $patient->expedient->descripcion_diagnostico ?? '' }} </p>
+                            <p class="text-left">Descripcion del Diagnostico:{{
+                                $patient->expedient->descripcion_diagnostico ?? '' }} </p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Tratamiento: {{ $patient->expedient->tratamiento ?? '' }} </p>
@@ -388,7 +369,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 

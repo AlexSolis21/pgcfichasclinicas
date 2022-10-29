@@ -33,7 +33,7 @@
                         <label>Paciente</label>
                         <div class="@error('patient_id') is-invalid  @enderror">
                             <div class="col-sm mb-3" wire:ignore>
-                                <select id="select2" name="patient_id" wire:model="patient_id"
+                                <select style="width: 100%" id="select2" name="patient_id" wire:model="patient_id"
                                     class="form-control form-bord">
                                     <option value=''>--Selecione Al Paciente--</option>
                                     @foreach ($patients as $patient)

@@ -18,16 +18,23 @@ class ConsultsManagement extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $fecha_consulta, $motivo_consulta, $prueba_laboratorio, $foto, $patient_id, $user_id, $consults_id;
-    
+
     public $search = '';
-    
+    public $isUploading = false;
+    public $opcionesLaboratorio = [];
+
+    public function mount()
+    {
+        $this->opcionesLaboratorio  = ["Si", "No"];
+    }
+
     protected function rules()
     {
         return [
             'fecha_consulta' => 'required|string',
             'motivo_consulta' => 'required|string',
-            'prueba_laboratorio' => 'nullable|string',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png,PDF,',
+            'prueba_laboratorio' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'patient_id' => 'required',
             'user_id' => 'required',
         ];
@@ -47,6 +54,7 @@ class ConsultsManagement extends Component
         Consults::create($validatedData);
         session()->flash('message', 'Registro Creado Correctamente');
         $this->resetInput();
+        $this->dispatchBrowserEvent('load-select');
         $this->dispatchBrowserEvent('close-modal');
     }
 
@@ -92,7 +100,7 @@ class ConsultsManagement extends Component
         $this->resetInput();
     }
 
-    
+
     public function resetInput()
     {
         $this->fecha_consulta = '';
@@ -106,11 +114,11 @@ class ConsultsManagement extends Component
     public function render()
     {
         // $user->roles()->pluck('name')->implode(' ')
-        $consults = Consults::where('motivo_consulta','like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
+        $consults = Consults::where('motivo_consulta', 'like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
         $patients = Patient::all();
         $users = User::role('Medico')->get();
-        
-        
+
+
         return view('livewire.pages.consults-management', ['consults' => $consults, 'patients' => $patients, 'users' => $users]);
     }
 }

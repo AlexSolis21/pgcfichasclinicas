@@ -29,24 +29,24 @@
                                     <th>Fecha de Consulta</th>
                                     <th>Motivo de Consulta</th>
                                     <th>Acciones</th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($consults as $consult)
                                 <tr>
                                     <td>{{ $consult->patient->nombres ." ". $consult->patient->apellidos }}</td>
-                                    <td>{{ $consult->doctor->nombre }}</td>
+                                    <td>{{ $consult->doctor->nombre ?? "" }}</td>
                                     <td>{{ $consult->fecha_consulta }}</td>
                                     <td>{{ $consult->motivo_consulta }}</td>
-            
+
                                     <td>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateConsultsModal"
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#updateConsultsModal"
                                             wire:click="editConsults({{ $consult->id }})" class="btn btn-primary">
                                             Editar
                                         </button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteConsultsModal"
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#deleteConsultsModal"
                                             wire:click="deleteConsults({{ $consult->id }})"
                                             class="btn btn-danger">Eliminar</button>
                                     </td>
@@ -80,5 +80,25 @@
             if (modal2 != null) modal2.hide();
             if (modal3 != null) modal3.hide();
         })
+
+        window.addEventListener('load-select', event => {
+            $('#select2').select2({
+            dropdownParent: $('#consultsModal')
+            });
+            $('#select2').on('change', function() {
+                @this.set('patient_id', this.value)
+            });
+        })
+    </script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+        $('#select2').select2({
+            dropdownParent: $('#consultsModal')
+        });
+        $('#select2').on('change', function() {
+            @this.set('patient_id', this.value)
+        });
+    })
     </script>
 </div>

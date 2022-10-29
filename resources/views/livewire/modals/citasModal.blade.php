@@ -10,7 +10,7 @@
             </div>
             <form wire:submit.prevent="saveCitas">
                 <div class="modal-body">
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label>Seleccione Paciente</label>
                         <select name="cita" wire:model="patient_id" class="form-control form-bord">
                             <option value=''>--Selecione Al Paciente--</option>
@@ -21,12 +21,30 @@
                         @error('patient_id')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
+                    </div> --}}
+                    <label>Prestamo</label>
+                    <div class="@error('patient_id') is-invalid  @enderror">
+                        <div wire:ignore>
+                            <select style="width: 100%" id="select2" name="patient_id" wire:model="patient_id"
+                                class="form-control form-bord">
+                                <option value=''>--Selecione Al Paciente--</option>
+                                @foreach ($patients as $patient)
+                                <option value={{ $patient->id }}>{{ $patient->nombres . ' ' . $patient->apellidos}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('patient_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
+
                     <div class="mb-3">
                         <label>Fecha De La Cita</label>
-                        <input type="date" wire:model.lazy="fecha_cita" class="form-control form-bord" min="{{date('Y-m-d')}}">
+                        <input type="date" wire:model.lazy="fecha_cita" class="form-control form-bord"
+                            min="{{date('Y-m-d')}}">
                         @error('fecha_cita')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -34,7 +52,7 @@
                         <label>Hora De La Cita</label>
                         <input type="time" wire:model.lazy="hora_cita" class="form-control form-bord">
                         @error('hora_cita')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -42,7 +60,7 @@
                         <label>Descripción</label>
                         <input type="text" wire:model.lazy="descripcion" class="form-control form-bord">
                         @error('descripcion')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -61,8 +79,8 @@
 </div>
 
 <!-- Update Citas Modal -->
-<div wire:ignore.self class="modal fade" id="updateCitasModal" tabindex="-1"
-    aria-labelledby="updateCitasModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="updateCitasModal" tabindex="-1" aria-labelledby="updateCitasModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,7 +108,7 @@
                         <label>Fecha De La Cita</label>
                         <input type="date" wire:model.lazy="fecha_cita" class="form-control form-bord">
                         @error('fecha_cita')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -98,7 +116,7 @@
                         <label>Hora De La Cita</label>
                         <input type="time" wire:model.lazy="hora_cita" class="form-control form-bord">
                         @error('hora_cita')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -106,11 +124,11 @@
                         <label>Descripción</label>
                         <input type="text" wire:model.lazy="descripcion" class="form-control form-bord">
                         @error('descripcion')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
-                   
+
 
                 </div>
 
@@ -127,8 +145,8 @@
 
 
 <!-- Delete Citas Modal -->
-<div wire:ignore.self class="modal fade" id="deleteCitasModal" tabindex="-1"
-    aria-labelledby="deleteCitasModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="deleteCitasModal" tabindex="-1" aria-labelledby="deleteCitasModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

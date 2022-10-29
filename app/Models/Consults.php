@@ -18,7 +18,7 @@ class Consults extends Model
     ];
 
     public function doctor() {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function patient() {

@@ -6,12 +6,12 @@
         <div class="row">
             <div class="col-md-12">
                 @if (session()->has('message'))
-                    <h5 class="alert alert-success">{{ session('message') }}</h5>
+                <h5 class="alert alert-success">{{ session('message') }}</h5>
                 @endif
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Pacientes
+                        <h4>Citas
                             <input type="search" wire:model="search" class="form-control float-end mx-2"
                                 placeholder="Buscar..." style="width: 230px" />
                             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
@@ -34,33 +34,31 @@
                             </thead>
                             <tbody>
                                 @forelse ($dates as $date)
-                                    <tr>
+                                <tr>
 
-                                        <td class="align-top">
-                                            {{ $date->patient->nombres . ' ' . $date->patient->apellidos }}</td>
-                                        <td class="align-top">{{ $date->fecha_cita }}</td>
-                                        <td class="align-top">{{ $date->hora_cita }}</td>
-                                        <td class="align-top">{{ $date->descripcion }}</td>
-                                       
-                                        <td>
-                                            <button type="button" data-bs-toggle="modal"
-                                                data-bs-target="#updateCitasModal"
-                                                wire:click="editCitas({{ $date->id }})" class="btn btn-primary">
-                                                Editar
-                                            </button>
-                                            <button type="button" data-bs-toggle="modal"
-                                                data-bs-target="#deleteCitasModal"
-                                                wire:click="deleteCitas({{ $date->id }})"
-                                                class="btn btn-danger">Eliminar</button>
-                                        
-                                        </td>
-                                        
-                                    </tr>
-                                   
+                                    <td class="align-top">
+                                        {{ $date->patient->nombres . ' ' . $date->patient->apellidos }}</td>
+                                    <td class="align-top">{{ $date->fecha_cita }}</td>
+                                    <td class="align-top">{{ $date->hora_cita }}</td>
+                                    <td class="align-top">{{ $date->descripcion }}</td>
+
+                                    <td>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateCitasModal"
+                                            wire:click="editCitas({{ $date->id }})" class="btn btn-primary">
+                                            Editar
+                                        </button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#deleteCitasModal"
+                                            wire:click="deleteCitas({{ $date->id }})"
+                                            class="btn btn-danger">Eliminar</button>
+
+                                    </td>
+
+                                </tr>
+
                                 @empty
-                                    <tr>
-                                        <td colspan="5">No se ha encontrado ningúna cita</td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="5">No se ha encontrado ningúna cita</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -86,5 +84,25 @@
             if (modal2 != null) modal2.hide();
             if (modal3 != null) modal3.hide();
         })
+
+        window.addEventListener('load-select', event => {
+            $('#select2').select2({
+            dropdownParent: $('#citasModal')
+            });
+            $('#select2').on('change', function() {
+                @this.set('patient_id', this.value)
+            });
+        })
+    </script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+        $('#select2').select2({
+            dropdownParent: $('#citasModal')
+        });
+        $('#select2').on('change', function() {
+            @this.set('patient_id', this.value)
+        });
+    })
     </script>
 </div>

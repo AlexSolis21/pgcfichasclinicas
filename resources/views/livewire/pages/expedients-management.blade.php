@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (session()->has('message'))
-                    <h5 class="alert alert-success">{{ session('message') }}</h5>
+                <h5 class="alert alert-success">{{ session('message') }}</h5>
                 @endif
 
                 <div class="card">
@@ -31,27 +31,26 @@
                             </thead>
                             <tbody>
                                 @forelse ($expedients as $expedient)
-                                    <tr>
-                                        <td>{{ $expedient->patient->nombres . ' ' . $expedient->patient->apellidos }}</td>
-                                        <td>{{ $expedient->patient->expediente_clinico }}</td>
+                                <tr>
+                                    <td>{{ $expedient->patient->nombres . ' ' . $expedient->patient->apellidos }}</td>
+                                    <td>{{ $expedient->patient->expediente_clinico }}</td>
 
-                                        <td>
-                                            <button type="button" data-bs-toggle="modal"
-                                                data-bs-target="#updateExpedientsModal"
-                                                wire:click="editExpedients({{ $expedient->id }})"
-                                                class="btn btn-primary">
-                                                Editar
-                                            </button>
-                                            <button type="button" data-bs-toggle="modal"
-                                                data-bs-target="#deleteExpedientsModal"
-                                                wire:click="deleteExpedients({{ $expedient->id }})"
-                                                class="btn btn-danger">Eliminar</button>
-                                        </td>
-                                    </tr>
+                                    <td>
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#updateExpedientsModal"
+                                            wire:click="editExpedients({{ $expedient->id }})" class="btn btn-primary">
+                                            Editar
+                                        </button>
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#deleteExpedientsModal"
+                                            wire:click="deleteExpedients({{ $expedient->id }})"
+                                            class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="5">No se ha encontrado ningún registro</td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="5">No se ha encontrado ningún registro</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -86,5 +85,25 @@
                 @this.set('patient_id', this.value)
             });
         })
+
+        window.addEventListener('load-select', event => {
+            $('#select2').select2({
+            dropdownParent: $('#expedientsModal')
+            });
+            $('#select2').on('change', function() {
+                @this.set('patient_id', this.value)
+            });
+        })
+    </script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+        $('#select2').select2({
+            dropdownParent: $('#expedientsModal')
+        });
+        $('#select2').on('change', function() {
+            @this.set('patient_id', this.value)
+        });
+    })
     </script>
 </div>
