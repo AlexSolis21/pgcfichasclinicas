@@ -11,10 +11,10 @@ class ForgotPassword extends Component
 {
     use Notifiable;
 
-    public $email='';
-    
+    public $correo = '';
+
     protected $rules = [
-        'email' => 'required|email',
+        'correo' => 'required|email',
     ];
 
     public function render()
@@ -23,35 +23,30 @@ class ForgotPassword extends Component
     }
 
 
-    public function routeNotificationForMail() {
-        return $this->email;
+    public function routeNotificationForMail()
+    {
+        return $this->correo;
     }
 
-    public function show(){
+    public function show()
+    {
 
-        if(env('IS_DEMO')){
-            return back()->with('demo', "You are in a demo version, you can't reset the password");
-        }
-        else{
+
 
         $this->validate();
 
-        $user = User::where('email', $this->email)->first();
+        $user = User::where('correo', $this->correo)->first();
 
-    
-        if($user){
 
-    
+        if ($user) {
+
+
             $this->notify(new ResetPassword($user->id));
 
-            return back()->with('status', "We have emailed your password reset link!");
-
-    
+            return back()->with('status', "Hemos enviado por correo electrónico el enlace para restablecer la contraseña.");
         } else {
-    
-            return back()->with('email', "We can't find any user with that email address.");
-    
+
+            return back()->with('email', "No podemos encontrar ningún usuario con esa dirección de correo electrónico.");
         }
     }
-}
 }

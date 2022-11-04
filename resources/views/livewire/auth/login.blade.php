@@ -46,12 +46,12 @@
                                         Don't have an account?
                                         <a href="{{ route('register') }}"
                                             class="text-primary text-gradient font-weight-bold">Sign up</a>
-                                    </p>
+                                    </p>--}}
                                     <p class="text-sm text-center">
-                                        Forgot your password? Reset your password
+                                        ¿Ha olvidado su contraseña? Restablecer la contraseña
                                         <a href="{{ route('password.forgot') }}"
-                                            class="text-primary text-gradient font-weight-bold">here</a>
-                                    </p> --}}
+                                            class="text-primary text-gradient font-weight-bold">Aquí</a>
+                                    </p> 
                                 </form>
                             </div>
                         </div>

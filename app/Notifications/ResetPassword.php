@@ -46,12 +46,12 @@ class ResetPassword extends Notification
     {
         $url = URL::temporarySignedRoute('reset-password', now()->addHours(12) ,['id' => $this->token]);
         return (new MailMessage)
-                    ->line('Hi!')
-                    ->subject('Reset Password')
-                    ->line('You are receveing this email so you can reset the password for your account')
-                    ->action('Reset Password', $url )
-                    ->line("If you didn't request this, please ignore this email.")
-                    ->line('Thank you!');
+                    ->line('¡Hola!')
+                    ->subject('Restablecer contraseña')
+                    ->line('Está recibiendo este correo electrónico para que pueda restablecer la contraseña de su cuenta')
+                    ->action('Restablecer contraseña', $url )
+                    ->line("Si no lo ha solicitado, ignore este correo electrónico.")
+                    ->line('Gracias.');
     }
 
     /**

@@ -4,6 +4,7 @@ use App\Http\Controllers\Exports\ExportsExcelController;
 use App\Http\Controllers\Exports\ExportsPdfController;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\ResetPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
@@ -36,7 +37,7 @@ Route::get('forgot-password', ForgotPassword::class)->middleware('guest')->name(
 Route::get('reset-password/{id}', ResetPassword::class)->middleware('signed')->name('reset-password');
 
 
-
+Route::get('sign-up', Register::class)->middleware('guest')->name('register');
 Route::get('ingresar', Login::class)->middleware('guest')->name('login');
 
 Route::get('user-profile', UserProfile::class)->middleware('auth')->name('user-profile');

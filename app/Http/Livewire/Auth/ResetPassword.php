@@ -9,13 +9,13 @@ use Illuminate\Auth\Events\PasswordReset;
 
 class ResetPassword extends Component
 {
-    public $email = '';
+    public $correo = '';
     public $password = '';
     public $passwordConfirmation = '';
     public $urlID = '';
 
     protected $rules= [
-        'email' => 'required|email',
+        'correo' => 'required|email',
         'password' => 'required|min:8|same:passwordConfirmation',
     ];
 
@@ -33,15 +33,15 @@ class ResetPassword extends Component
         
         $this->validate(); 
           
-        $existingUser = User::where('email', $this->email)->first();
+        $existingUser = User::where('correo', $this->correo)->first();
 
         if($existingUser && $existingUser->id == $this->urlID) { 
             $existingUser->update([
                 'password' => $this->password
             ]);
-            redirect('sign-in')->with('status', 'Your password has been reset!');
+            redirect('ingresar')->with('status', 'Tu contraseña ha sido restablecida.');
         } else {
-            return back()->with('email', "We can't find any user with that email address.");
+            return back()->with('correo', "No podemos encontrar ningún usuario con esa dirección de correo electrónico.");
         }
     
     }
