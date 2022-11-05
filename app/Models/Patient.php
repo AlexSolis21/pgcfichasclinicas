@@ -28,9 +28,14 @@ class Patient extends Model
         return $this->hasMany(Consults::class, 'patient_id');
     }
 
+    // public function expedient() {
+    //     return $this->hasOne(Expedients::class, 'patient_id');
+    // }
+
     public function expedient() {
-        return $this->hasOne(Expedients::class, 'patient_id');
+        return $this->hasMany(Expedients::class, 'patient_id');
     }
+
 
 
 }
