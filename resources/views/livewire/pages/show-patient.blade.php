@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
@@ -183,24 +183,25 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             @foreach ($patient->expedient as $expedient => $row)
-            <div class="card">
-                <div class="card-header" id="{{$row->id}}">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#{{$row->created_at}}"
-                            aria-expanded="false" aria-controls="{{$row->created_at}}">
-                            <h4 class="text-dark text-center">Expedientes:{{$row->id}}</h4>
-                        </button>
-                    </h5>
-                </div>
-                <div id="{{$row->created_at}}" class="collapse" aria-labelledby="{{$row->id}}" data-parent="#accordion">
-                    <div class="card-body">
+                <div class="card">
+                    <div class="card-header" id="{{ $row->id }}">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#{{ $row->created_at }}"
+                                aria-expanded="false" aria-controls="{{ $row->created_at }}">
+                                <h4 class="text-dark text-center">Consulta: {{ $row->fecha_consulta }}</h4>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="{{ $row->created_at }}" class="collapse" aria-labelledby="{{ $row->id }}"
+                        data-parent="#accordion">
+                        <div class="card-body">
 
-                        {{-- <div>{{ $patient->expedient }}</div> --}}
-                  
+                            {{-- <div>{{ $patient->expedient }}</div> --}}
+
                             <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                                 <p class="text-left">Control: {{ $row->control ?? '' }} </p>
                             </div>
@@ -372,10 +373,10 @@
                             <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                                 <p class="text-left">Observaciones: {{ $row->observaciones ?? '' }} </p>
                             </div>
-                       
+
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
 
 

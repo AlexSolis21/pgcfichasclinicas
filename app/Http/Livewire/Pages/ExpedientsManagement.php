@@ -14,8 +14,9 @@ class ExpedientsManagement extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
-
-    public $enfermedad_actual,
+    public $isUploading = false;
+    public $fecha_consulta,
+        $enfermedad_actual,
         $presion_arterial,
         $frecuencia_cardiaca,
         $frecuencia_respiratoria,
@@ -60,15 +61,24 @@ class ExpedientsManagement extends Component
         $tratamiento,
         $evolucion,
         $observaciones,
+        $prueba_laboratorio,
+        $foto,
         $patient_id,
         $control,
         $user_id;
 
     public $search = '';
+    public $opcionesLaboratorio = [];
+
+    public function mount()
+    {
+        $this->opcionesLaboratorio  = ["Si", "No"];
+    }
 
     protected function rules()
     {
         return [
+            'fecha_consulta' => 'required|string',
             'enfermedad_actual' => 'nullable|string|min:6',
             'presion_arterial' => 'nullable|string|min:2',
             'frecuencia_cardiaca' => 'nullable|string|min:2',
@@ -113,6 +123,8 @@ class ExpedientsManagement extends Component
             'tratamiento' => 'nullable|string|min:6',
             'evolucion' => 'nullable|string|min:6',
             'observaciones' => 'nullable|string|min:6',
+            'prueba_laboratorio' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             // 'patient_id' => 'required|unique:expedients,patient_id',
             'patient_id' => 'required',
             'control'=>'required',
@@ -130,7 +142,9 @@ class ExpedientsManagement extends Component
     public function saveExpedients()
     {
         $validatedData = $this->validate();
-
+        if (!empty($validatedData['foto'])) {
+            $validatedData['foto'] = $this->foto->store('fotos', 'public');
+        }
         ModelsExpedients::create($validatedData);
         session()->flash('message', 'Datos Guardados Correctamente');
         $this->resetInput();
@@ -143,6 +157,7 @@ class ExpedientsManagement extends Component
         $expedients = ModelsExpedients::find($expedients_id);
         if ($expedients) {
             $this->expedients_id = $expedients->id;
+            $this->fecha_consulta = $expedients->fecha_consulta;
             $this->enfermedad_actual = $expedients->enfermedad_actual;
             $this->presion_arterial = $expedients->presion_arterial;
             $this->frecuencia_cardiaca = $expedients->frecuencia_cardiaca;
@@ -187,6 +202,8 @@ class ExpedientsManagement extends Component
             $this->tratamiento = $expedients->tratamiento;
             $this->evolucion = $expedients->evolucion;
             $this->observaciones = $expedients->observaciones;
+            $this->prueba_laboratorio = $expedients->prueba_laboratorio;
+            $this->foto = $expedients->foto;
             $this->user_id = $expedients->user_id;
             $this->patient_id = $expedients->patient_id;
         } else {
@@ -196,55 +213,7 @@ class ExpedientsManagement extends Component
 
     public function updateExpedients()
     {
-        $validatedData = $this->validate([
-            'enfermedad_actual' => 'nullable|string|min:6',
-            'presion_arterial' => 'nullable|string|min:2',
-            'frecuencia_cardiaca' => 'nullable|string|min:2',
-            'frecuencia_respiratoria' => 'nullable|string|min:2',
-            'saturacion' => 'nullable|string|min:2',
-            'temperatura' => 'nullable|string|min:2',
-            'peso' => 'nullable|string|min:2',
-            'estatura' => 'nullable|string|min:2',
-            'piel' => 'nullable|string|min:6',
-            'cabeza' => 'nullable|string|min:6',
-            'ojos' => 'nullable|string|min:6',
-            'nariz' => 'nullable|string|min:6',
-            'boca' => 'nullable|string|min:6',
-            'cuello' => 'nullable|string|min:6',
-            'torax' => 'nullable|string|min:6',
-            'pulmones' => 'nullable|string|min:6',
-            'corazon' => 'nullable|string|min:6',
-            'abdomen' => 'nullable|string|min:6',
-            'genitourinario' => 'nullable|string|min:6',
-            'miembros' => 'nullable|string|min:6',
-            'neurologico' => 'nullable|string|min:6',
-            'alergias' => 'nullable|string|min:6',
-            'traumatismos' => 'nullable|string|min:6',
-            'cirugias' => 'nullable|string|min:6',
-            'comorbilidad' => 'nullable|string|min:6',
-            'hospitalizacion' => 'nullable|string|min:6',
-            'transfusiones' => 'nullable|string|min:6',
-            'farmacos' => 'nullable|string|min:6',
-            'ginecologico_obstetrico' => 'nullable|string|min:6',
-            'grupo_sanguineo' => 'nullable|string|min:6',
-            'alcoholismo' => 'nullable|string|min:6',
-            'drogas' => 'nullable|string|min:6',
-            'alimentacion' => 'nullable|string|min:6',
-            'ejercicio' => 'nullable|string|min:6',
-            'inmunizaciones' => 'nullable|string|min:6',
-            'habitos' => 'nullable|string|min:6',
-            'padres' => 'nullable|string|min:6',
-            'hermanos' => 'nullable|string|min:6',
-            'otros_familiares' => 'nullable|string|min:6',
-            'diagnostico' => 'nullable|string|min:6',
-            'descripcion_diagnostico' => 'nullable|string|min:6',
-            'tratamiento' => 'nullable|string|min:6',
-            'evolucion' => 'nullable|string|min:6',
-            'observaciones' => 'nullable|string|min:6',
-            'patient_id' => 'required',
-            'user_id' => 'required',
-
-        ]);
+        $validatedData = $this->validate();
         ModelsExpedients::where('id', $this->expedients_id)->update($validatedData);
         session()->flash('message', 'Expediente Actualizado Correctamente');
         $this->resetInput();
@@ -270,7 +239,7 @@ class ExpedientsManagement extends Component
 
     public function resetInput()
     {
-
+        $this->fecha_consulta = '';
         $this->enfermedad_actual = '';
         $this->presion_arterial = '';
         $this->frecuencia_cardiaca = '';
@@ -315,6 +284,8 @@ class ExpedientsManagement extends Component
         $this->tratamiento = '';
         $this->evolucion = '';
         $this->observaciones = '';
+        $this->prueba_laboratorio = '';
+        $this->foto = '';
     }
 
     public function render()

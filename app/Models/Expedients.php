@@ -10,7 +10,7 @@ class Expedients extends Model
     use HasFactory;
     
     protected $fillable = [
-       
+        'fecha_consulta',
         'enfermedad_actual',
         'presion_arterial',
         'frecuencia_cardiaca',
@@ -55,6 +55,8 @@ class Expedients extends Model
         'tratamiento',
         'evolucion',
         'observaciones',
+        'prueba_laboratorio',
+        'foto',
         'user_id',
         'control',
         'patient_id'

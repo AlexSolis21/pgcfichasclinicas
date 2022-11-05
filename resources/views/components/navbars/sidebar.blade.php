@@ -67,7 +67,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'consultas' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('consultas') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -75,7 +75,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Consultas</span>
                 </a>
-            </li>
+            </li> --}}
 
              <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'expedientes' ? ' active bg-gradient-primary' : '' }} "
@@ -83,7 +83,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">assignment</i>
                     </div>
-                    <span class="nav-link-text ms-1">Expedientes</span>
+                    <span class="nav-link-text ms-1">Consultas</span>
                 </a>
             </li> 
 

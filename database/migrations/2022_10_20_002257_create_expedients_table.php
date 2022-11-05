@@ -61,11 +61,15 @@ return new class extends Migration
             $table->string('tratamiento')->nullable();
             $table->string('evolucion')->nullable();
             $table->string('observaciones')->nullable();
+            $table->string('prueba_laboratorio')->nullable();
+            $table->string('foto')->nullable();
+            $table->date('fecha_consulta');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
+            
         });
     }
 
