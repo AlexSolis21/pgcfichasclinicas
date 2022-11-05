@@ -56,6 +56,7 @@ class Expedients extends Model
         'evolucion',
         'observaciones',
         'user_id',
+        'control',
         'patient_id'
     ]; 
 

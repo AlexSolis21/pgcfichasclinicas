@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('expedients', function (Blueprint $table) {
             $table->id();
+            $table->string('control')->nullable();
             $table->string('enfermedad_actual')->nullable();
             $table->string('presion_arterial')->nullable();
             $table->string('frecuencia_cardiaca')->nullable();
@@ -62,7 +63,7 @@ return new class extends Migration
             $table->string('observaciones')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('patient_id')->unique();
+            $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
         });

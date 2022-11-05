@@ -198,6 +198,9 @@
                     <div class="card-body">
 
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
+                            <p class="text-left">Control: {{ $patient->expedient->control ?? '' }} </p>
+                        </div>
+                        <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Médico: {{ $patient->expedient->medic->nombre ?? '' }} </p>
                         </div>
                         <h5 class="text-danger text-left">Motivo de Consulta:</h5>
@@ -312,8 +315,7 @@
                             <p class="text-left">Farmacos: {{ $patient->expedient->farmacos ?? '' }} </p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
-                            <p class="text-left">Ginecologico-Obstetrico:{{ $patient->expedient->ginecologico_obstetrico
-                                ?? '' }}</p>
+                            <p class="text-left">Ginecologico-Obstetrico:{{ $patient->expedient->ginecologico_obstetrico ?? '' }}</p>
                         </div>
                         <div class="shadow p-3 mb-2 text-black rounded border border-dark">
                             <p class="text-left">Grupo Sanguineo: {{ $patient->expedient->grupo_sanguineo ?? '' }}</p>

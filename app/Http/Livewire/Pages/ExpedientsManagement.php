@@ -61,6 +61,7 @@ class ExpedientsManagement extends Component
         $evolucion,
         $observaciones,
         $patient_id,
+        $control,
         $user_id;
 
     public $search = '';
@@ -112,7 +113,9 @@ class ExpedientsManagement extends Component
             'tratamiento' => 'nullable|string|min:6',
             'evolucion' => 'nullable|string|min:6',
             'observaciones' => 'nullable|string|min:6',
-            'patient_id' => 'required|unique:expedients,patient_id',
+            // 'patient_id' => 'required|unique:expedients,patient_id',
+            'patient_id' => 'required',
+            'control'=>'required',
             'user_id' => 'required',
 
 
@@ -318,11 +321,13 @@ class ExpedientsManagement extends Component
     {
         $expedients = ModelsExpedients::where('enfermedad_actual', 'like', '%' . $this->search . '%')->orderBy('id', 'ASC')->paginate(8);
         $patients = Patient::all();
+        $control = ['Primera Consulta','Reconsulta','Emergencia'];
         $users = User::role('Medico')->get();
         return view('livewire.pages.expedients-management', [
             'expedients' => $expedients,
             'patients' => $patients,
-            'users' => $users
+            'users' => $users,
+            'controles'=>$control
         ]);
     }
 }

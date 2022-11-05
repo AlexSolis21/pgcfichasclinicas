@@ -61,6 +61,19 @@
                             @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label>Control</label>
+                            <select name="control" wire:model="control" class="form-control form-bord">
+                                <option value=''>--Tipo de Control--</option>
+                                @foreach($controles as $control)
+                                <option value={{ $control}}>{{ $control}}</option>
+                                @endforeach
+                            </select>
+                            @error('control')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <p class="text-danger"><strong>Motivo De Consulta:</strong></p>
                         <div class="mb-3">
                             <label>Enfermedad Actual</label>
@@ -477,6 +490,19 @@
                         </select>
                         @error('users_id')
                             <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Control</label>
+                        <select name="control" wire:model="control" class="form-control form-bord">
+                            <option value=''>--Tipo de Control--</option>
+                            @foreach($controles as $control)
+                            <option value={{ $control}}>{{ $control}}</option>
+                            @endforeach
+                        </select>
+                        @error('control')
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
